@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
+import registrationRoutes from './routes/registrationRoutes.js';
 
 dotenv.config();
 
@@ -31,6 +32,8 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes);
 //Event routes
 app.use('/api/events', eventRoutes);
+//Registration routes
+app.use('/api/registrations', registrationRoutes);
 
 //Start the server
 const PORT = process.env.PORT || 5000;
