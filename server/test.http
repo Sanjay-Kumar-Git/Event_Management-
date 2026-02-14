@@ -16,3 +16,9 @@ Content-Type: application/json
     "email": "sanjay@example.com",
     "password": "password123"
 }
+
+###
+POST http://localhost:3000/api/events/seed
+
+###
+GET http://localhost:3000/api/events?category=Business

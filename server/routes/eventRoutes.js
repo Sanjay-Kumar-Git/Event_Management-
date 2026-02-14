@@ -43,4 +43,49 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// SEED EVENTS (Run once then delete)
+router.post("/seed", async (req, res) => {
+  try {
+    await Event.deleteMany();
+
+    const sampleEvents = [
+      {
+        name: "Tech Conference 2026",
+        organizer: "Bellcorp",
+        location: "Hyderabad",
+        date: new Date("2026-03-10"),
+        description: "A large tech conference",
+        capacity: 100,
+        category: "Technology"
+      },
+      {
+        name: "Music Fest",
+        organizer: "LiveNation",
+        location: "Mumbai",
+        date: new Date("2026-04-15"),
+        description: "Live music festival",
+        capacity: 200,
+        category: "Entertainment"
+      },
+      {
+        name: "Startup Meetup",
+        organizer: "Startup Hub",
+        location: "Bangalore",
+        date: new Date("2026-02-25"),
+        description: "Networking event",
+        capacity: 50,
+        category: "Business"
+      }
+    ];
+
+    const createdEvents = await Event.insertMany(sampleEvents);
+
+    res.json(createdEvents);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
 export default router;
