@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
 
@@ -24,6 +25,9 @@ try{
 app.get('/', (req, res) => {
   res.send('Welcome to the Event Management API');
 });
+
+//Auth routes
+app.use('/api/auth', authRoutes);
 
 //Start the server
 const PORT = process.env.PORT || 5000;
