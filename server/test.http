@@ -24,7 +24,7 @@ POST http://localhost:3000/api/events/seed
 GET http://localhost:3000/api/events?category=Business
 
 ###
-POST http://localhost:3000/api/registrations/6990552a26a6c0d03f617113
+POST http://localhost:3000/api/registrations/699055ab8abcdc279b1842b2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5OTAyODlmOTJiMDcxYjA4Y2E2NzQzZCIsImlhdCI6MTc3MTA2Njc2NywiZXhwIjoxNzcxNjcxNTY3fQ.FUshuYHWYrxwMyLe-Ho9DSb21KRSRtwv1qBjqWnjxhg
 Content-Type: application/json
 
