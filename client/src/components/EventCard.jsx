@@ -3,25 +3,32 @@ import { Link } from "react-router-dom";
 function EventCard({ event }) {
   return (
     <div className="col-md-4 mb-4">
-      <div className="card h-100 shadow-sm">
+      <div className="card h-100 border-0 shadow rounded-4">
         <div className="card-body d-flex flex-column">
-          <h5 className="card-title">{event.name}</h5>
-          <p className="card-text">
-            <strong>Organizer:</strong> {event.organizer} <br />
-            <strong>Location:</strong> {event.location} <br />
-            <strong>Date:</strong>{" "}
-            {new Date(event.date).toLocaleDateString()} <br />
-            <strong>Category:</strong> {event.category}
+
+          <h5 className="fw-bold">{event.name}</h5>
+
+          <p className="text-muted mb-2">
+            {event.location} • {event.category}
+          </p>
+
+          <p className="small text-secondary">
+            {new Date(event.date).toLocaleDateString()}
+          </p>
+
+          <p className="small">
+            Seats Available: {event.capacity}
           </p>
 
           <div className="mt-auto">
             <Link
               to={`/events/${event._id}`}
-              className="btn btn-primary w-100"
+              className="btn btn-dark w-100 rounded-pill"
             >
               View Details
             </Link>
           </div>
+
         </div>
       </div>
     </div>
