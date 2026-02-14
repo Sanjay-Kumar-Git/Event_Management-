@@ -3,6 +3,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
+import eventRoutes from './routes/eventRoutes.js';
 
 dotenv.config();
 
@@ -28,6 +29,8 @@ app.get('/', (req, res) => {
 
 //Auth routes
 app.use('/api/auth', authRoutes);
+//Event routes
+app.use('/api/events', eventRoutes);
 
 //Start the server
 const PORT = process.env.PORT || 5000;
