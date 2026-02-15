@@ -1,7 +1,7 @@
 import express from 'express';
 import Registration from '../models/Registration.js';
 import Event from '../models/Event.js';
-import Protect from '../middleware/Protect.js';
+import protect from '../middleware/Protect.js';
 
 const router = express.Router();
 //Register for an event
