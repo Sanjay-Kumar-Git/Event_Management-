@@ -10,15 +10,21 @@ router.get('/', async (req, res) => {
         let query = {};
         // Search by title
         if (search) {
-            query.title = {$regex: search, $options: 'i'};
+            query.$or = [
+                {name: {$regex: search, $options: 'i'}},
+                {organizer: {$regex: search, $options: 'i'}},
+                {location: {$regex: search, $options: 'i'}},
+                {category: {$regex: search, $options: 'i'}},
+            ];
+
         }
         // Filter by category
         if (category) {
-            query.category = category;
+            query.category = {$regex: `^${category}$`, $options: 'i'};
         }
         // Filter by location
         if (location) {
-            query.location = location;
+            query.location = {  $regex: location , $options: 'i'};
         }
         // Filter by date
         if (date) {
