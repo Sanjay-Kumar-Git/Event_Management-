@@ -1,11 +1,11 @@
 import express from 'express';
 import Registration from '../models/Registration.js';
 import Event from '../models/Event.js';
-import protect from '../middleware/Protect.js';
+import protect from '../middleware/protect.js';
 
 const router = express.Router();
 //Register for an event
-router.post('/:eventId', Protect, async (req, res) => {
+router.post('/:eventId', protect, async (req, res) => {
     try {
         const event = await Event.findById(req.params.eventId);
         if (!event) {
@@ -32,7 +32,7 @@ router.post('/:eventId', Protect, async (req, res) => {
     }
 });
 //Cancel registration
-router.delete('/:eventId', Protect, async (req, res) => {
+router.delete('/:eventId', protect, async (req, res) => {
     try {
         const registration = await Registration.findOneAndDelete({ event: req.params.eventId, user: req.user._id });
         if (!registration) {
@@ -45,7 +45,7 @@ router.delete('/:eventId', Protect, async (req, res) => {
 });
 
 //Get my registered events
-router.get('/my-events', Protect, async (req, res) => {
+router.get('/my-events', protect, async (req, res) => {
     try {
         const registrations = await Registration.find({ user: req.user._id }).populate('event');
         res.json(registrations);
